@@ -10,10 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class testCasesSelenium {
     public WebDriver driver;
+    public Properties obj;
 
     @BeforeAll
     public static void setDriver(){
@@ -21,8 +25,9 @@ public class testCasesSelenium {
     }
 
     @BeforeEach
-    public void setup(){
+    public void setup() throws IOException {
         driver = new ChromeDriver();
+        obj = readingProperties();
     }
 
     @AfterEach
@@ -30,14 +35,22 @@ public class testCasesSelenium {
         driver.quit();
     }
 
+    public Properties readingProperties() throws IOException {
+        Properties obj = new Properties();
+        FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"\\application.properties");
+        obj.load(objfile);
+        return obj;
+    }
+
     @Test
-    @DisplayName("Check components of landing page")
-    public void landingPageCheck() throws InterruptedException {
-        driver.get("https://urban.lk/");
+    @DisplayName("1.Check components of landing page")
+    public void landingPageCheck() throws InterruptedException, IOException {
+        driver.get(obj.getProperty("landingPage"));
+        driver.manage().window().maximize();
         TimeUnit.SECONDS.sleep(5);
 
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Urban Premium Online Store| Online Shopping Sri Lanka|eCommerce Sri Lanka | URBAN";
+        String expectedTitle = obj.getProperty("landingPageTitle");
 
         if(expectedTitle.equals(actualTitle)){
             System.out.println("Test Pass - Landing Page Title");
@@ -50,8 +63,8 @@ public class testCasesSelenium {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement actualFooter = driver.findElement(By.xpath("//body/main[1]/div[1]/footer[1]/div[1]/div[2]/div[1]/div[1]/div[1]"));
-        String expectedFooter = "Copyright © 2022 Urban Utopia. All Rights Reserved.";
+        WebElement actualFooter = driver.findElement(By.xpath(obj.getProperty("footerElement")));
+        String expectedFooter = obj.getProperty("footerElementText");
 
         if(expectedFooter.equals(actualFooter.getText())){
             System.out.println("Test Pass - Landing Page Footer");
@@ -64,19 +77,20 @@ public class testCasesSelenium {
     }
 
     @Test
-    @DisplayName("Login with credentials and verify login")
-    public void loginCheck() throws InterruptedException {
-        driver.get("https://urban.lk/");
+    @DisplayName("2.Login with credentials and verify login")
+    public void loginCheck() throws InterruptedException, IOException {
+        driver.get(obj.getProperty("landingPage"));
+        driver.manage().window().maximize();
         TimeUnit.SECONDS.sleep(5);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.findElement(By.linkText("My Account")).click();
+        driver.findElement(By.linkText(obj.getProperty("myAccountLinkText"))).click();
 
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.urlContains("https://urban.lk/customer/account/login/"));
+        wait.until(ExpectedConditions.urlContains(obj.getProperty("loginUrl")));
 
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Customer Login | URBAN";
+        String expectedTitle = obj.getProperty("loginTitle");
 
         if(expectedTitle.equals(actualTitle)){
             System.out.println("Test Pass - Customer Login Title");
@@ -87,16 +101,16 @@ public class testCasesSelenium {
 
         TimeUnit.SECONDS.sleep(6);
 
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys("gdsudam@gmail.com");
-        driver.findElement(By.id("pass")).sendKeys("abc123");
-        driver.findElement(By.xpath("//button[contains(@name,'send')]")).click();
+        driver.findElement(By.xpath(obj.getProperty("emailTextBox"))).sendKeys(obj.getProperty("email"));
+        driver.findElement(By.id(obj.getProperty("passwordTextBox"))).sendKeys(obj.getProperty("password"));
+        driver.findElement(By.xpath(obj.getProperty("loginButton"))).click();
 
 
         WebDriverWait wait1 = new WebDriverWait(driver,10);
-        wait1.until(ExpectedConditions.urlToBe("https://urban.lk/customer/account/index/"));
+        wait1.until(ExpectedConditions.urlToBe(obj.getProperty("accountUrl")));
 
         String actualTitle1 = driver.getTitle();
-        String expectedTitle1 = "My Account | URBAN";
+        String expectedTitle1 = obj.getProperty("myAccountTitle");
 
         if(expectedTitle1.equals(actualTitle1)){
             System.out.println("Test Pass - Customer Account");
@@ -107,19 +121,20 @@ public class testCasesSelenium {
     }
 
     @Test
-    @DisplayName("Search with the keyword iphones and verfiy results")
-    public void searchCheck() throws InterruptedException {
-        driver.get("https://urban.lk/");
+    @DisplayName("3.Search with the keyword iphones and verfiy results")
+    public void searchCheck() throws InterruptedException, IOException {
+        driver.get(obj.getProperty("landingPage"));
+        driver.manage().window().maximize();
         TimeUnit.SECONDS.sleep(5);
 
-        driver.findElement(By.name("q")).sendKeys("iphones");
-        driver.findElement(By.xpath("//header/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[2]/button[1]")).click();
+        driver.findElement(By.name(obj.getProperty("searchElement"))).sendKeys(obj.getProperty("searchKey"));
+        driver.findElement(By.xpath(obj.getProperty("searchButton"))).click();
 
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.urlToBe("https://urban.lk/catalogsearch/result/?q=iphones"));
+        wait.until(ExpectedConditions.urlToBe(obj.getProperty("searchResultUrl")));
 
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Search results for: 'iphones' | URBAN";
+        String expectedTitle = obj.getProperty("searchResultTitle");
 
         if(expectedTitle.equals(actualTitle)){
             System.out.println("Test Pass - Search for iphones");
@@ -130,65 +145,67 @@ public class testCasesSelenium {
     }
 
     @Test
-    @DisplayName("Check product description")
-    public void productDetailsCheck() throws InterruptedException {
-        driver.get("https://urban.lk/apple-watch-series-7-41");
+    @DisplayName("4.Check product description")
+    public void productDetailsCheck() throws InterruptedException, IOException {
+        driver.get(obj.getProperty("productDescriptionUrl"));
+        driver.manage().window().maximize();
         TimeUnit.SECONDS.sleep(5);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Apple Watch Series 7 (GPS, 41mm) | Buy Original Urban.lk | URBAN";
+        String expectedTitle = obj.getProperty("productDescriptionTitle");
         assertEquals("Expected title is differ form the actual title",expectedTitle, actualTitle);
 
-        WebElement productName = driver.findElement(By.xpath("//body/main[1]/div[1]/section[1]/div[1]/h1[1]/span[1]"));
-        String expectedProductName = "Apple Watch Series 7 (GPS, 41mm)";
+        WebElement productName = driver.findElement(By.xpath(obj.getProperty("productNameElement")));
+        String expectedProductName = obj.getProperty("productName");
         assertEquals("Actual product name is differ from the expected product name",expectedProductName, productName.getText());
 
-        WebElement productActualPrice = driver.findElement(By.xpath("//span[contains(text(),'Rs. 159,799.00')]"));
-        String expectedProductPrice = "Rs. 159,799.00";
+        WebElement productActualPrice = driver.findElement(By.xpath(obj.getProperty("productActualPriceElement")));
+        String expectedProductPrice = obj.getProperty("productActualPrice");
         assertEquals("Actual product price is differ from the expected product price",expectedProductPrice, productActualPrice.getText());
 
-        WebElement productInitialPrice = driver.findElement(By.xpath("//span[contains(text(),'Rs. 184,799.00')]"));
-        String expectedProductInitialPrice = "Rs. 184,799.00";
+        WebElement productInitialPrice = driver.findElement(By.xpath(obj.getProperty("productInitialPriceElement")));
+        String expectedProductInitialPrice = obj.getProperty("productInitialPrice");
         assertEquals("Actual product name is differ from the expected product name",expectedProductInitialPrice, productInitialPrice.getText());
     }
 
     @Test
-    @DisplayName("Checking customer contact page and redirecting to landing page")
-    public void contactDetailsCheck() throws InterruptedException {
-        driver.get("https://urban.lk/contact-us.html");
+    @DisplayName("5.Checking customer contact page and redirecting to landing page")
+    public void contactDetailsCheck() throws InterruptedException, IOException {
+        driver.get(obj.getProperty("contactUsUrl"));
+        driver.manage().window().maximize();
         TimeUnit.SECONDS.sleep(5);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Contact Us | URBAN";
+        String expectedTitle = obj.getProperty("contactUsTitle");
         assertEquals(expectedTitle, actualTitle);
 
-        WebElement actualPage = driver.findElement(By.xpath("//span[contains(text(),'Contact US')]"));
-        String expectedPage = "Contact US";
+        WebElement actualPage = driver.findElement(By.xpath(obj.getProperty("contactUsPageNameElement")));
+        String expectedPage = obj.getProperty("contactUsPageName");
         assertEquals("Expected page name is differ form the actual page name",expectedPage, actualPage.getText());
 
-        WebElement actualEmail = driver.findElement(By.xpath("//span[contains(text(),'support@urban.lk')]"));
-        String expectedEmail = "support@urban.lk";
+        WebElement actualEmail = driver.findElement(By.xpath(obj.getProperty("actualEmailElement")));
+        String expectedEmail = obj.getProperty("actualEmail");
         assertEquals("Actual email is differ from the expected email",expectedEmail, actualEmail.getText());
 
-        WebElement ActualInquiries = driver.findElement(By.xpath("//span[contains(text(),'sales@urban.lk')]"));
-        String expectedInquiries = "sales@urban.lk";
+        WebElement ActualInquiries = driver.findElement(By.xpath(obj.getProperty("inquiriesEmailElement")));
+        String expectedInquiries = obj.getProperty("inquiriesEmail");
         assertEquals("Actual inquiries email is differ from the expected inquiries email",expectedInquiries, ActualInquiries.getText());
 
-        WebElement actualCareers = driver.findElement(By.xpath("//span[contains(text(),'careers@urban.lk')]"));
-        String expectedCareers = "careers@urban.lk";
+        WebElement actualCareers = driver.findElement(By.xpath(obj.getProperty("careersElement")));
+        String expectedCareers = obj.getProperty("careersEmail");
         assertEquals("Actual product name is differ from the expected product name",expectedCareers, actualCareers.getText());
 
         TimeUnit.SECONDS.sleep(5);
 
-        driver.findElement(By.xpath("//header/div[2]/div[1]/div[1]/div[1]/a[1]/img[1]")).click();
+        driver.findElement(By.xpath(obj.getProperty("iconElement"))).click();
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.urlToBe("https://urban.lk/"));
+        wait.until(ExpectedConditions.urlToBe(obj.getProperty("landingPage")));
 
         String actualTitle2 = driver.getTitle();
-        String expectedTitle2 = "Urban Premium Online Store| Online Shopping Sri Lanka|eCommerce Sri Lanka | URBAN";
+        String expectedTitle2 = obj.getProperty("landingPageTitle");
 
         if(expectedTitle2.equals(actualTitle2)){
             System.out.println("Test Pass - Menu");

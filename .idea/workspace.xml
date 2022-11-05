@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3ec66a05-8ed5-4401-9683-85b94aa9b6ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/selenium/testCasesSelenium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/selenium/testCasesSelenium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/selenium/testCasesSelenium.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/selenium/testCasesSelenium.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2H1rnxWskVWWNbmH2jqaeFvKh3P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SEM7/Online/IS3440 - IT Quality Assurance/Assignments/IS3440_GroupAssignment/Individual Contribution - Selenium/seleniumTesting/src/test/java/org/selenium&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SEM7\Online\IS3440 - IT Quality Assurance\Assignments\IS3440_GroupAssignment\Individual Contribution - Selenium\seleniumTesting\src\test\java\org\selenium" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.testCasesSelenium">
+    <configuration name="testCasesSelenium" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumTesting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.selenium" />
+      <option name="MAIN_CLASS_NAME" value="org.selenium.testCasesSelenium" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testCasesSelenium.contactDetailsCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumTesting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.selenium" />
+      <option name="MAIN_CLASS_NAME" value="org.selenium.testCasesSelenium" />
+      <option name="METHOD_NAME" value="contactDetailsCheck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testCasesSelenium.landingPageCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumTesting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.selenium" />
+      <option name="MAIN_CLASS_NAME" value="org.selenium.testCasesSelenium" />
+      <option name="METHOD_NAME" value="landingPageCheck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testCasesSelenium.loginCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumTesting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.selenium" />
+      <option name="MAIN_CLASS_NAME" value="org.selenium.testCasesSelenium" />
+      <option name="METHOD_NAME" value="loginCheck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testCasesSelenium.searchCheck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seleniumTesting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.selenium" />
+      <option name="MAIN_CLASS_NAME" value="org.selenium.testCasesSelenium" />
+      <option name="METHOD_NAME" value="searchCheck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.testCasesSelenium.landingPageCheck" />
+      <item itemvalue="JUnit.testCasesSelenium.contactDetailsCheck" />
+      <item itemvalue="JUnit.testCasesSelenium.searchCheck" />
+      <item itemvalue="JUnit.testCasesSelenium" />
+      <item itemvalue="JUnit.testCasesSelenium.loginCheck" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.testCasesSelenium" />
+        <item itemvalue="JUnit.testCasesSelenium.searchCheck" />
+        <item itemvalue="JUnit.testCasesSelenium.landingPageCheck" />
+        <item itemvalue="JUnit.testCasesSelenium.loginCheck" />
+        <item itemvalue="JUnit.testCasesSelenium.contactDetailsCheck" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ec66a05-8ed5-4401-9683-85b94aa9b6ea" name="Changes" comment="" />
+      <created>1667463607968</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667463607968</updated>
+      <workItem from="1667463611128" duration="2150000" />
+      <workItem from="1667466157415" duration="3837000" />
+      <workItem from="1667470679068" duration="6492000" />
+      <workItem from="1667483355467" duration="6179000" />
+      <workItem from="1667503245930" duration="650000" />
+      <workItem from="1667535652972" duration="984000" />
+      <workItem from="1667570526713" duration="2714000" />
+      <workItem from="1667617502784" duration="4069000" />
+      <workItem from="1667631464030" duration="4561000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
